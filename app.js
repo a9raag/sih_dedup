@@ -15,19 +15,19 @@ var app = express();
 //app.set('view engine', 'ejs');
 
 
-var data = {"percent":"55"}
-
+var fs = require('fs');
+var data = JSON.parse(fs.readFileSync('file.json', 'utf8'));
 
 app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public_temp')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-app.get("/fuelPrices", function(req, res){
+app.get("/data", function(req, res){
   res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify(data ));
 
