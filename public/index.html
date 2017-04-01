@@ -27,6 +27,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="js/jquery.slimscroll.min.js"></script>
 <!-- Custom and plugin javascript -->
 <style>
+
+canvas#myChart{
+  pointer-events: none
+}
+
 .modal {
   background-color:snow;
   width:75%;
@@ -35,8 +40,8 @@ top:5%;
 right:30%;
     left: 20%;
 outline: none;
-}    
-    
+}
+
 </style>
 <link href="css/custom.css" rel="stylesheet">
 <script src="js/custom.js"></script>
@@ -192,9 +197,9 @@ outline: none;
 
 			<div class="col-md-4 ">
 				<div class="content-top-1">
-				<div class="col-md-6 top-content">           
+				<div class="col-md-6 top-content">
                     <a href="#myModalGlass" role="button" class="btn btn-lg btn-danger" style="width: 107.484px;" data-toggle="modal" onClick="f('glass');">Glass</a>
-                   
+
 <div id="myModalGlass" class="modal fade modal-white" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -202,11 +207,11 @@ outline: none;
   </div>
   <div class="modal-body">
        <table id="glass" border="1">heyyy</table>
-   
+
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-   
+
   </div>
 </div>
 					<label>8761</label>
@@ -245,24 +250,24 @@ outline: none;
 				</div>
 				<div class="content-top-1">
 				<div class="col-md-6 top-content">
-                    
- 
-<a href="#myModalAccessories" role="button" class="btn btn-lg btn-danger" data-toggle="modal" onClick="f('acc');">Accessories</a>                   
+
+
+<a href="#myModalAccessories" role="button" class="btn btn-lg btn-danger" data-toggle="modal" onClick="f('acc');">Accessories</a>
 <div id="myModalAccessories" class="modal fade modal-white" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">Accessories duplicate entries found</h3>
   </div>
   <div class="modal-body">
-      
+
       <table id="acc" border="1"></table>
       </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-   
+
   </div>
 </div>
-                    
+
 					<label>6295</label>
 				</div>
 				<div class="col-md-6 top-content1">
@@ -292,31 +297,31 @@ outline: none;
 				</div>
 				<div class="content-top-1">
 				<div class="col-md-6 top-content">
-                  
- 
-<a href="#myModalSteel" role="button" class="btn btn-lg btn-danger" data-toggle="modal" onClick="f('iron');">Iron</a>                   
+
+
+<a href="#myModalSteel" role="button" class="btn btn-lg btn-danger" data-toggle="modal" onClick="f('iron');">Iron</a>
 <div id="myModalSteel" class="modal fade modal-white" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">Iron duplicate entries found</h3>
   </div>
   <div class="modal-body">
-      
+
       <table id="iron" border="1"></table>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-   
+
   </div>
 </div>
-                    
-					
+
+
 					<label>3401</label>
 				</div>
 				<div class="col-md-6 top-content1">
 					<div id="demo-pie-3" class="pie-title-center" data-percent="75"> <span class="pie-value"></span> </div>
 					<script>
-                        
+
 					      var myEl = angular.element( document.querySelector( '#demo-pie-3' ) );
 					      myEl.attr('data-percent',jsonData.points);
 					  </script>
@@ -329,137 +334,115 @@ outline: none;
 				<!---start-chart---->
 				<!----->
 				<div class="content-graph">
-				<div class="content-color">
-					<div class="content-ch"><p><i></i>Iron</p><span>100%</span>
-					<div class="clearfix"> </div>
-					</div>
-					<div class="content-ch1"><p><i></i>Glass</p><span> 50%</span>
-					<div class="clearfix"> </div>
-					</div>
-				</div>
-				<!--graph-->
-		<link rel="stylesheet" href="css/graph.css">
-		<!--//graph-->
-							<script src="js/jquery.flot.js"></script>
-									<script>
-									$(document).ready(function () {
+          <canvas id="myChart"></canvas>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
 
-										// Graph Data ##############################################
-										var graphData = [{
-												// Visits
-												data: [ [6, 1300], [7, 1600], [8, 1900], [9, 2100], [10, 2500], [11, 2200], [12, 2000], [13, 1950], [14, 1900], [15, 2000] ],
-												color: '#999999'
-											}, {
-												// Returning Visits
-												data: [ [6, 500], [7, 600], [8, 550], [9, 600], [10, 800], [11, 900], [12, 800], [13, 850], [14, 830], [15, 1000] ],
-												color: '#999999',
-												points: { radius: 4, fillColor: '#7f8c8d' }
-											}
-										];
+          <h2>Chart.js — Line Chart Demo</h2>
 
-										// Lines Graph #############################################
-										$.plot($('#graph-lines'), graphData, {
-											series: {
-												points: {
-													show: true,
-													radius: 5
-												},
-												lines: {
-													show: true
-												},
-												shadowSize: 0
-											},
-											grid: {
-												color: '#7f8c8d',
-												borderColor: 'transparent',
-												borderWidth: 20,
-												hoverable: true
-											},
-											xaxis: {
-												tickColor: 'transparent',
-												tickDecimals: 2
-											},
-											yaxis: {
-												tickSize: 1000
-											}
-										});
 
-										// Bars Graph ##############################################
-										$.plot($('#graph-bars'), graphData, {
-											series: {
-												bars: {
-													show: true,
-													barWidth: .9,
-													align: 'center'
-												},
-												shadowSize: 0
-											},
-											grid: {
-												color: '#7f8c8d',
-												borderColor: 'transparent',
-												borderWidth: 20,
-												hoverable: true
-											},
-											xaxis: {
-												tickColor: 'transparent',
-												tickDecimals: 2
-											},
-											yaxis: {
-												tickSize: 1000
-											}
-										});
 
-										// Graph Toggle ############################################
-										$('#graph-bars').hide();
+          <select ng-model="myVar">
+          <option value="dogs">Dogs
+          <option value="tuts">Tutorials
 
-										$('#lines').on('click', function (e) {
-											$('#bars').removeClass('active');
-											$('#graph-bars').fadeOut();
-											$(this).addClass('active');
-											$('#graph-lines').fadeIn();
-											e.preventDefault();
-										});
+          </select>
 
-										$('#bars').on('click', function (e) {
-											$('#lines').removeClass('active');
-											$('#graph-lines').fadeOut();
-											$(this).addClass('active');
-											$('#graph-bars').fadeIn().removeClass('hidden');
-											e.preventDefault();
-										});
+          <div ng-switch="myVar">
+          <div ng-switch-when="dogs">
+          <h1>Dogs</h1>
+          <p>Welcome to a world of dogs.</p>
+           <script>
+           var ctx = document.getElementById("myChart").getContext('2d');
 
-										// Tooltip #################################################
-										function showTooltip(x, y, contents) {
-											$('<div id="tooltip">' + contents + '</div>').css({
-												top: y - 16,
-												left: x + 20
-											}).appendTo('body').fadeIn();
-										}
+          var original = Chart.defaults.global.legend.onClick;
+          Chart.defaults.global.legend.onClick = function(e, legendItem) {
+          update_caption(legendItem);
+          original.call(this, e, legendItem);
+          };
 
-										var previousPoint = null;
+          var myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+          labels: ["M", "T", "W", "T", "F", "S", "S"],
+          datasets: [{
+          label: 'apples',
+          backgroundColor: "rgba(153,255,51,1)",
+          data: [12, 19, 3, 17, 28, 24, 7],
+          }, {
+          label: 'oranges',
+          backgroundColor: "rgba(255,153,0,1)",
+          data: [30, 29, 5, 5, 20, 3, 10],
+          }]
+          }
+          });
 
-										$('#graph-lines, #graph-bars').bind('plothover', function (event, pos, item) {
-											if (item) {
-												if (previousPoint != item.dataIndex) {
-													previousPoint = item.dataIndex;
-													$('#tooltip').remove();
-													var x = item.datapoint[0],
-														y = item.datapoint[1];
-														showTooltip(item.pageX, item.pageY, y + ' visitors at ' + x + '.00h');
-												}
-											} else {
-												$('#tooltip').remove();
-												previousPoint = null;
-											}
-										});
+          var labels = {
+          "apples": true,
+          "oranges": true
+          };
 
-									});
-									</script>
-				<div class="graph-container">
+          var caption = document.getElementById("caption");
 
-									<div id="graph-lines"> </div>
-									<div id="graph-bars"> </div>
-								</div>
+          var update_caption = function(legend) {
+          labels[legend.text] = legend.hidden;
+
+          var selected = Object.keys(labels).filter(function(key) {
+          return labels[key];
+          });
+
+          var text = selected.length ? selected.join(" & ") : "nothing";
+
+          caption.innerHTML = "The chart is displaying " + text;
+          };
+
+           </script>
+          </div>
+          <div ng-switch-when="tuts">
+          <h1>Tutorials</h1>
+          <p>Learn from examples.</p>
+          <script>
+          var ctx = document.getElementById("myChart").getContext('2d');
+          var myChart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+          labels: ["M", "T", "W", "T", "F", "S", "S"],
+          datasets: [{
+          backgroundColor: [
+          "#2ecc71",
+          "#3498db",
+          "#95a5a6",
+          "#9b59b6",
+          "#f1c40f",
+          "#e74c3c",
+          "#34495e"
+          ],
+          data: [12, 19, 3, 17, 28, 24, 7]
+          }]
+          }
+          });
+          </script>
+          <div>
+
+          </div>
+          </div>
+          <div ng-switch-default>
+          <h1>Switch</h1>
+          <p>Select topic from the dropdown, to switch the content of this DIV.</p>
+          </div>
+          </div>
+
+
+
+                  <div>
+
+          </div>
+
+          <div class="graph-container">
+
+                 <div id="graph-lines"> </div>
+                 <div id="graph-bars"> </div>
+               </div>
+
 
 		</div>
 		</div>

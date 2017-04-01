@@ -1,0 +1,14 @@
+{
+  "Glass":{
+    "total":"400",
+    "dup":"240",
+  },
+  "Accessories":{
+    "total":"400",
+    "dup":"110",
+  },
+  "Steel":{
+    "total":"400",
+    "dup":"150",
+  }
+}
