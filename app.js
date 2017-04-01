@@ -19,7 +19,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public_temp')));
 
 app.use('/', routes);
 app.use('/users', users);
@@ -55,5 +55,8 @@ app.use(function(err, req, res, next) {
     });
 });
 
+app.listen(3000,function(){
+           console.log("Server on");
+           });
 
 module.exports = app;
