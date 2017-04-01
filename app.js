@@ -15,7 +15,7 @@ var app = express();
 //app.set('view engine', 'ejs');
 
 
-var data = {'percent':50}
+var data = {"percent":"55"}
 
 
 app.use(favicon());
@@ -29,7 +29,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.get("/fuelPrices", function(req, res){
   res.setHeader('Content-Type', 'application/json');
-    res.send(JSON.stringify({ 'percent':50 }));
+    res.send(JSON.stringify(data ));
 
 });
 
