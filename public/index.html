@@ -241,7 +241,7 @@ outline: none;
 					          return result;
 					      })();
 					      var myEl = angular.element( document.querySelector( '#demo-pie-1' ) );
-					      myEl.attr('data-percent',jsonData.tasks);
+					      myEl.attr('data-percent',jsonData.glass);
 					  </script>
 				</div>
 
@@ -273,24 +273,8 @@ outline: none;
 				<div class="col-md-6 top-content1">
 					<div id="demo-pie-2" class="pie-title-center" data-percent="50"> <span class="pie-value"></span> </div>
 					<script>
-                         $.ajaxSetup({
-					        async: false
-					        });
-					        var jsonData= (function() {
-					          var result;
-					          $.ajax({
-					              type:'GET',
-					              url:'data',
-					              dataType:'json',
-					              async:false,
-					              success:function(data){
-					                  result = data;
-					              }
-					          });
-					          return result;
-					      })();
 					      var myEl = angular.element( document.querySelector( '#demo-pie-2' ) );
-					      myEl.attr('data-percent',jsonData.cards);
+					      myEl.attr('data-percent',jsonData.acc);
 					  </script>
 				</div>
 				 <div class="clearfix"> </div>
@@ -323,7 +307,7 @@ outline: none;
 					<script>
 
 					      var myEl = angular.element( document.querySelector( '#demo-pie-3' ) );
-					      myEl.attr('data-percent',jsonData.points);
+					      myEl.attr('data-percent',jsonData.steel);
 					  </script>
 
 				</div>
@@ -342,13 +326,13 @@ outline: none;
 
 
           <select ng-model="myVar">
-          <option value="dogs">Bar
-          <option value="tuts">Pie
+          <option value="bar">Bar
+          <option value="pie">Pie
 
           </select>
 
           <div ng-switch="myVar">
-          <div ng-switch-when="dogs">
+          <div ng-switch-when="bar">
            <script>
            var ctx = document.getElementById("myChart").getContext('2d');
 
@@ -361,47 +345,32 @@ outline: none;
           var myChart = new Chart(ctx, {
           type: 'bar',
           data: {
-          labels: ["M", "T", "W", "T", "F", "S", "S"],
+          labels: Object.keys(jsonData),
           datasets: [{
-          label: 'apples',
+          label: 'No. of Duplicates',
           backgroundColor: "rgba(153,255,51,1)",
-          data: [12, 19, 3, 17, 28, 24, 7],
-          }, {
-          label: 'oranges',
-          backgroundColor: "rgba(255,153,0,1)",
-          data: [30, 29, 5, 5, 20, 3, 10],
+          data: [jsonData.glass, jsonData.acc, jsonData.steel],
           }]
           }
           });
 
           var labels = {
-          "apples": true,
-          "oranges": true
+          //"apples": true,
+          //"oranges": true
           };
 
-          var caption = document.getElementById("caption");
-
-          var update_caption = function(legend) {
-          labels[legend.text] = legend.hidden;
-
-          var selected = Object.keys(labels).filter(function(key) {
-          return labels[key];
-          });
-
-          var text = selected.length ? selected.join(" & ") : "nothing";
-
-          caption.innerHTML = "The chart is displaying " + text;
-          };
 
            </script>
           </div>
-          <div ng-switch-when="tuts">
+
+
+          <div ng-switch-when="pie">
           <script>
           var ctx = document.getElementById("myChart").getContext('2d');
           var myChart = new Chart(ctx, {
           type: 'pie',
           data: {
-          labels: ["M", "T", "W", "T", "F", "S", "S"],
+          labels: Object.keys(jsonData),
           datasets: [{
           backgroundColor: [
           "#2ecc71",
@@ -412,7 +381,7 @@ outline: none;
           "#e74c3c",
           "#34495e"
           ],
-          data: [12, 19, 3, 17, 28, 24, 7]
+          data: [jsonData.glass, jsonData.acc, jsonData.steel]
           }]
           }
           });
