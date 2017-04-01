@@ -14,6 +14,10 @@ var app = express();
 //app.set('views', path.join(__dirname, 'views'));
 //app.set('view engine', 'ejs');
 
+
+var data = {'percent':50}
+
+
 app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -23,6 +27,11 @@ app.use(express.static(path.join(__dirname, 'public_temp')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.get("/fuelPrices", function(req, res){
+  res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify({ 'percent':50 }));
+
+});
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
@@ -32,6 +41,7 @@ app.use(function(req, res, next) {
 });
 
 /// error handlers
+
 
 // development error handler
 // will print stacktrace
@@ -55,7 +65,7 @@ app.use(function(err, req, res, next) {
     });
 });
 
-app.listen(3000,function(){
+app.listen(8080,function(){
            console.log("Server on");
            });
 
