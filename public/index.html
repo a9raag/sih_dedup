@@ -20,6 +20,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="css/font-awesome.css" rel="stylesheet">
 <script src="js/jquery.min.js"> </script>
 <!-- Mainly scripts -->
+
+<script src="js/table.js"></script>
 <script src="js/jquery.metisMenu.js"></script>
 <script src="js/angular.min.js"></script>
 <script src="js/jquery.slimscroll.min.js"></script>
@@ -28,7 +30,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 .modal {
   background-color:snow;
   width:75%;
-    height: 60% ;
+    height: 90% ;
 top:5%;
 right:30%;
     left: 20%;
@@ -190,38 +192,17 @@ outline: none;
 
 			<div class="col-md-4 ">
 				<div class="content-top-1">
-				<div class="col-md-6 top-content">
-                    
-                    <a href="#myModalGlass" role="button" class="btn btn-lg btn-success warning_1" data-toggle="modal">Glass</a>
+				<div class="col-md-6 top-content">           
+                    <a href="#myModalGlass" role="button" class="btn btn-lg btn-danger" style="width: 107.484px;" data-toggle="modal" onClick="f('glass');">Glass</a>
                    
 <div id="myModalGlass" class="modal fade modal-white" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Modal header</h3>
+    <h3 id="myModalLabel">Glass duplicate entries found</h3>
   </div>
   <div class="modal-body">
-      
-    <p id="glassData">No duplicate data found ...</p>
-      <script>
-           $.ajaxSetup({
-					        async: false
-					        });
-					        var jsonData= (function() {
-					          var result;
-					          $.ajax({
-					              type:'GET',
-					              url:'data',
-					              dataType:'json',
-					              async:false,
-					              success:function(data){
-					                  result = data;
-					              }
-					          });
-					          return result;
-					      })();
-					      var myEl = angular.element( document.querySelector( '#glassData' ) );
-					      document.getElementById("glassData").innerHTML = jsonData.tasks;
-					  </script>
+       <table id="glass" border="1">heyyy</table>
+   
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -266,20 +247,16 @@ outline: none;
 				<div class="col-md-6 top-content">
                     
  
-<a href="#myModalAccessories" role="button" class="btn btn-lg btn-success warning_1" data-toggle="modal">Accessories</a>                   
+<a href="#myModalAccessories" role="button" class="btn btn-lg btn-danger" data-toggle="modal" onClick="f('acc');">Accessories</a>                   
 <div id="myModalAccessories" class="modal fade modal-white" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Modal header</h3>
+    <h3 id="myModalLabel">Accessories duplicate entries found</h3>
   </div>
   <div class="modal-body">
       
-    <p id="accessoriesData">No duplicate data found ...</p>
-      <script>
-		      var myEl = angular.element( document.querySelector( '#accessoriesData' ) );
-                document.getElementById("accessoriesData").innerHTML = jsonData.cards;
-					  </script>
-  </div>
+      <table id="acc" border="1"></table>
+      </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
    
@@ -291,8 +268,24 @@ outline: none;
 				<div class="col-md-6 top-content1">
 					<div id="demo-pie-2" class="pie-title-center" data-percent="50"> <span class="pie-value"></span> </div>
 					<script>
+                         $.ajaxSetup({
+					        async: false
+					        });
+					        var jsonData= (function() {
+					          var result;
+					          $.ajax({
+					              type:'GET',
+					              url:'data',
+					              dataType:'json',
+					              async:false,
+					              success:function(data){
+					                  result = data;
+					              }
+					          });
+					          return result;
+					      })();
 					      var myEl = angular.element( document.querySelector( '#demo-pie-2' ) );
-					      myEl.attr('data-percent',jsonData.points);
+					      myEl.attr('data-percent',jsonData.cards);
 					  </script>
 				</div>
 				 <div class="clearfix"> </div>
@@ -301,19 +294,15 @@ outline: none;
 				<div class="col-md-6 top-content">
                   
  
-<a href="#myModalSteel" role="button" class="btn btn-lg btn-success warning_1" data-toggle="modal">Iron</a>                   
-<div id="myModalSteel" class="modal fade modal-white" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<a href="#myModalSteel" role="button" class="btn btn-lg btn-danger" data-toggle="modal" onClick="f('iron');">Iron</a>                   
+<div id="myModalSteel" class="modal fade modal-white" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Modal header</h3>
+    <h3 id="myModalLabel">Iron duplicate entries found</h3>
   </div>
   <div class="modal-body">
       
-    <p id="steelData">No duplicate data found ...</p>
-      <script>
-		      var myEl = angular.element( document.querySelector( '#steelData' ) );
-                document.getElementById("steelData").innerHTML = jsonData.points;
-					  </script>
+      <table id="iron" border="1"></table>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -327,8 +316,9 @@ outline: none;
 				<div class="col-md-6 top-content1">
 					<div id="demo-pie-3" class="pie-title-center" data-percent="75"> <span class="pie-value"></span> </div>
 					<script>
+                        
 					      var myEl = angular.element( document.querySelector( '#demo-pie-3' ) );
-					      myEl.attr('data-percent',jsonData.cards);
+					      myEl.attr('data-percent',jsonData.points);
 					  </script>
 
 				</div>
@@ -340,10 +330,10 @@ outline: none;
 				<!----->
 				<div class="content-graph">
 				<div class="content-color">
-					<div class="content-ch"><p><i></i>Chrome </p><span>100%</span>
+					<div class="content-ch"><p><i></i>Iron</p><span>100%</span>
 					<div class="clearfix"> </div>
 					</div>
-					<div class="content-ch1"><p><i></i>Safari</p><span> 50%</span>
+					<div class="content-ch1"><p><i></i>Glass</p><span> 50%</span>
 					<div class="clearfix"> </div>
 					</div>
 				</div>

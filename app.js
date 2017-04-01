@@ -17,6 +17,9 @@ var app = express();
 
 var fs = require('fs');
 var data = JSON.parse(fs.readFileSync('file.json', 'utf8'));
+var glass = JSON.parse(fs.readFileSync('glass.json', 'utf8'));
+var acc = JSON.parse(fs.readFileSync('acc.json', 'utf8'));
+var iron = JSON.parse(fs.readFileSync('iron.json', 'utf8'));
 
 app.use(favicon());
 app.use(logger('dev'));
@@ -30,6 +33,24 @@ app.use('/users', users);
 app.get("/data", function(req, res){
   res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify(data ));
+
+});
+//data specific to glass
+app.get("/glass", function(req, res){
+  res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify(glass));
+
+});
+//data specific to iron
+app.get("/acc", function(req, res){
+  res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify(acc));
+
+});
+//data specific to iron
+app.get("/iron", function(req, res){
+  res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify(iron));
 
 });
 
