@@ -71,18 +71,18 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
     <script type="text/javascript"
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>
- <script src="javascripts/angular.min.js"></script>  
+ <script src="javascripts/angular.min.js"></script>
 <script >
   /*  document.onload(){
 var dataPercent = document.getElementById("input1").value ;
     document.getElementById("disp").textContent = dataPercent ;
  $("#PreviewGaugeMeter_2").attr("data-percent",dataPercent);
     }*/
-        
+
 $( ".GaugeMeter" ).change(function() {
   $('#PreviewGaugeMeter_2').attr("data-percent", "50");
 });
-    
+
     </script>
 </div>
 <div class="jquery-script-clear"></div>
@@ -91,7 +91,7 @@ $( ".GaugeMeter" ).change(function() {
 <div class="container" style="margin:150px auto; text-align:center;">
     <div>
       <label>Name:</label>
-      <input id="input1" type="number" 
+      <input id="input1" type="number"
              name = "userName"
              ng-model="user.name"
              ng-model-options="{ getterSetter: true }"
@@ -100,14 +100,17 @@ $( ".GaugeMeter" ).change(function() {
       <h1>Hello {{user.name}}
           <p id="disp"> </p>!</h1>
     </div>
-   
-  <div class="GaugeMeter" id="PreviewGaugeMeter_2" data-percent="" data-append="mph" data-size="200" data-theme="White" data-back="RGBa(0,0,0,.1)" data-animate_gauge_colors="1" data-animate_text_colors="1" data-width="15" data-label="Shrutika" data-style="Arch" data-label_color="#FFF"></div>
+  <div class="GaugeMeter" id="PreviewGaugeMeter_2" data-percent="13" data-append="mph" data-size="200" data-theme="White" data-back="RGBa(0,0,0,.1)" data-animate_gauge_colors="1" data-animate_text_colors="1" data-width="15" data-label="Shrutika" data-style="Arch" data-label_color="#FFF"></div>
      <!-- <div class="GaugeMeter" id="PreviewGaugeMeter_1" data-percent="60" data-prepend="<font style='color:White;font-size:35px;margin-left:-15px'>&ndash;</font>" data-size="188" data-theme="White" data-back="RGBa(0,0,0,.1)" data-animate_gauge_colors="1" data-animate_text_colors="1" data-width="2" data-label="Years" data-label_color="#FFF"></div>
   <div class="GaugeMeter" id="PreviewGaugeMeter_3" data-percent="100" data-text="<font style='color:White;font-size:35px;letter-spacing:-1px'>1.21</font>" data-append="<font style='color:white'>GW</font>" data-size="200" data-theme="White" data-back="RGBa(0,0,0,.1)" data-width="15" data-label="Mr Fusion" data-style="Semi" data-label_color="#FFF"></div>
   <div class="GaugeMeter" id="PreviewGaugeMeter_4" data-percent="100" data-append="Y" data-size="180" data-theme="White" data-back="RGBa(0,0,0,.1)" data-animate_gauge_colors="1" data-animate_text_colors="1" data-width="15" data-label="Flux Capacitor" data-label_color="#FFF" data-stripe="2"></div>-->
 </div>
-<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script> 
-<script src="javascripts/jquery.AshAlom.gaugeMeter-2.0.0.min.js"></script> 
+ <script>
+var myEl = angular.element( document.querySelector( '#PreviewGaugeMeter_2' ) );
+myEl.attr('data-percent',"90");
+</script>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="javascripts/jquery.AshAlom.gaugeMeter-2.0.0.min.js"></script>
 <script>
 $(".GaugeMeter").gaugeMeter();
 </script>
