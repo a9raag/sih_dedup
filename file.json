@@ -1,1 +1,14 @@
-{"glass":"55", "acc":"23", "steel":"15"}
+{
+  "glass":{
+    "percent":55,
+    "total":8761
+  },
+  "acc":{
+    "percent":23,
+    "total":6295
+  },
+  "steel":{
+    "percent":15,
+    "total":3401
+  }
+}

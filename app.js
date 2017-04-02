@@ -21,6 +21,7 @@ var glass = JSON.parse(fs.readFileSync('glass.json', 'utf8'));
 var acc = JSON.parse(fs.readFileSync('acc.json', 'utf8'));
 var iron = JSON.parse(fs.readFileSync('iron.json', 'utf8'));
 var glass1 = JSON.parse(fs.readFileSync('glass1.json', 'utf8'));
+var perf = JSON.parse(fs.readFileSync('perf.json', 'utf8'));
 
 app.use(favicon());
 app.use(logger('dev'));
@@ -36,6 +37,13 @@ app.get("/data", function(req, res){
     res.send(JSON.stringify(data ));
 
 });
+
+app.get("/perf", function(req, res){
+  res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify(perf ));
+
+});
+
 //data specific to glass
 app.get("/glass", function(req, res){
   res.setHeader('Content-Type', 'application/json');

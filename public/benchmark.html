@@ -25,7 +25,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="js/jquery.metisMenu.js"></script>
 <script src="js/angular.min.js"></script>
 <script src="js/jquery.slimscroll.min.js"></script>
-    
+
 <script src="js/jquery.AshAlom.gaugeMeter-2.0.0.min.js"></script>
 <!-- Custom and plugin javascript -->
 <style>
@@ -202,7 +202,7 @@ table {
                     <li>
                         <a href="index.html" class=" hvr-bounce-to-right"><i class="fa fa-dashboard nav_icon "></i><span class="nav-label">Dashboards</span> </a>
                     </li>
-                    
+
                     <li>
                         <a href="dedup.html" class=" hvr-bounce-to-right"><i class="fa fa-th nav_icon"></i><span class="nav-label">Duplicate vs Unique</span> </a>
                     </li>
@@ -216,7 +216,7 @@ table {
 			</div>
         </nav>
         <div id="page-wrapper" class="gray-bg dashbard-1">
-       <div class="content-main" style="height:300px">
+       <div class="content-main" >
 
   		<!--banner-->
 
@@ -227,15 +227,15 @@ table {
 
 				<div class="col-md-5 content-top-1" style="margin-left: 20px;">
 				<div class="col-md-6 top-content">
-                  
+
 
 
 					<label>CPU</label>
 				</div>
 				<div class="col-md-6 top-content1">
 
-			  <div class="GaugeMeter" id="PreviewGaugeMeter_3" data-percent="0" data-used="0.9" data-total="3" data-text="<font style='font-size:35px'>0.9</font>" data-append="<font style='color:blue'>GHz</font>" data-size="180" data-theme="blue" data-back="RGBa(0,0,0,.1)" data-width="15" data-label="Ferquency Consumed" data-style="Semi" data-label_color="blue"></div>
-					
+			  <div class="GaugeMeter" id="PreviewGaugeMeter_3" data-percent="0" data-used="0" data-total="3" data-text="" data-append="<font style='color:blue'>GHz</font>" data-size="180" data-theme="blue" data-back="RGBa(0,0,0,.1)" data-width="15" data-label="Ferquency Consumed" data-style="Semi" data-label_color="blue"></div>
+
 					<script>
 					        $.ajaxSetup({
 					        async: false
@@ -244,7 +244,7 @@ table {
 					          var result;
 					          $.ajax({
 					              type:'GET',
-					              url:'data',
+					              url:'perf',
 					              dataType:'json',
 					              async:false,
 					              success:function(data){
@@ -254,7 +254,9 @@ table {
 					          return result;
 					      })();
 					      var myEl = angular.element( document.querySelector( '#PreviewGaugeMeter_3' ) );
-					    //  myEl.attr('data-percent',jsonData.glass);
+					      myEl.attr('data-used',jsonData.CPU);
+                myEl.attr('data-text',"<font style='font-size:35px'>"+jsonData.CPU+"</font>");
+
 					  </script>
 				</div>
 
@@ -269,16 +271,35 @@ table {
 					<label>Memory</label>
 				</div>
 				<div class="col-md-6 top-content1">
-                     <div class="GaugeMeter" id="PreviewGaugeMeter_4" data-percent="0" data-used="3" data-total="16" data-append="%"
-                          data-text="3" data-size="180" data-theme="blue" data-back="RGBa(0,0,0,.1)" data-animate_gauge_colors="1" data-animate_text_colors="1" data-width="15" data-label="consumed" data-label_color="blue" data-stripe="2"></div>
+                     <div class="GaugeMeter" id="PreviewGaugeMeter_4" data-percent="0" data-used="0" data-total="16" data-append="%"
+                          data-text="0" data-size="180" data-theme="blue" data-back="RGBa(0,0,0,.1)" data-animate_gauge_colors="1" data-animate_text_colors="1" data-width="15" data-label="" data-label_color="blue" data-stripe="2"></div>
 					<script>
+					      var myEl = angular.element( document.querySelector( '#PreviewGaugeMeter_4' ) );
+					      myEl.attr('data-used',jsonData.Memory);
+                myEl.attr('data-label',jsonData.Memory+"GB consumed ");
+					  </script>
+				</div>
+				 <div class="clearfix"> </div>
+				</div>
+
+        <div class="col-md-11 content-top-1" style="margin-left: 20px; width:950px" >
+				<div class="col-md-11 top-content">
+
+
+
+					<h2 >No. of Records processed/ms : <script>document.write(jsonData.Rec);</script></h2> 
+
+				</div>
+				<div class="col-md-6 top-content1">
+                     <script>
 					      var myEl = angular.element( document.querySelector( '#PreviewGaugeMeter_4' ) );
 					//      myEl.attr('data-percent',jsonData.acc);
 					  </script>
 				</div>
 				 <div class="clearfix"> </div>
 				</div>
-			
+
+
 		<div class="clearfix"> </div>
 		</div>
 		<!---->

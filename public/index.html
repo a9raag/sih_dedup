@@ -50,7 +50,7 @@ table {
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
         color: black ;
 }
-    
+
 </style>
 <link href="css/custom.css" rel="stylesheet">
 <script src="js/custom.js"></script>
@@ -161,7 +161,7 @@ table {
                     <li>
                         <a href="index.html" class=" hvr-bounce-to-right"><i class="fa fa-dashboard nav_icon "></i><span class="nav-label">Dashboards</span> </a>
                     </li>
-                    
+
                     <li>
                         <a href="dedup.html" class=" hvr-bounce-to-right"><i class="fa fa-th nav_icon"></i><span class="nav-label">Duplicate vs Unique</span> </a>
                     </li>
@@ -203,7 +203,25 @@ table {
 
   </div>
 </div>
-					<label>8761</label>
+  <script>
+  $.ajaxSetup({
+  async: false
+  });
+  var jsonData= (function() {
+    var result;
+    $.ajax({
+        type:'GET',
+        url:'data',
+        dataType:'json',
+        async:false,
+        success:function(data){
+            result = data;
+        }
+    });
+    return result;
+})();
+  </script>
+					<label><script>document.write(jsonData.glass.total)</script></label>
 				</div>
 				<div class="col-md-6 top-content1">
 
@@ -213,24 +231,9 @@ table {
 					<div id="demo-pie-1" class="pie-title-center" data-percent=0> <span class="pie-value"></span> </div>
 
 					<script>
-					        $.ajaxSetup({
-					        async: false
-					        });
-					        var jsonData= (function() {
-					          var result;
-					          $.ajax({
-					              type:'GET',
-					              url:'data',
-					              dataType:'json',
-					              async:false,
-					              success:function(data){
-					                  result = data;
-					              }
-					          });
-					          return result;
-					      })();
+
 					      var myEl = angular.element( document.querySelector( '#demo-pie-1' ) );
-					      myEl.attr('data-percent',jsonData.glass);
+					      myEl.attr('data-percent',jsonData.glass.percent);
 					  </script>
 				</div>
 
@@ -257,13 +260,13 @@ table {
   </div>
 </div>
 
-					<label>6295</label>
+					<label><script>document.write(jsonData.acc.total)</script></label>
 				</div>
 				<div class="col-md-6 top-content1">
 					<div id="demo-pie-2" class="pie-title-center" data-percent="50"> <span class="pie-value"></span> </div>
 					<script>
 					      var myEl = angular.element( document.querySelector( '#demo-pie-2' ) );
-					      myEl.attr('data-percent',jsonData.acc);
+					      myEl.attr('data-percent',jsonData.acc.percent);
 					  </script>
 				</div>
 				 <div class="clearfix"> </div>
@@ -289,14 +292,14 @@ table {
 </div>
 
 
-					<label>3401</label>
+					<label><script>document.write(jsonData.steel.total)</script></label>
 				</div>
 				<div class="col-md-6 top-content1">
 					<div id="demo-pie-3" class="pie-title-center" data-percent="75"> <span class="pie-value"></span> </div>
 					<script>
 
 					      var myEl = angular.element( document.querySelector( '#demo-pie-3' ) );
-					      myEl.attr('data-percent',jsonData.steel);
+					      myEl.attr('data-percent',jsonData.steel.percent);
 					  </script>
 
 				</div>
@@ -337,8 +340,8 @@ table {
           labels: Object.keys(jsonData),
           datasets: [{
           label: 'No. of Duplicates',
-          backgroundColor: "rgba(153,255,51,1)",
-          data: [jsonData.glass, jsonData.acc, jsonData.steel],
+          backgroundColor: "rgba(201,48,44,1)",
+          data: [jsonData.glass.percent, jsonData.acc.percent, jsonData.steel.percent],
           }]
           }
           });
@@ -370,7 +373,7 @@ table {
           "#e74c3c",
           "#34495e"
           ],
-          data: [jsonData.glass, jsonData.acc, jsonData.steel]
+          data: [jsonData.glass.percent, jsonData.acc.percent, jsonData.steel.percent]
           }]
           }
           });
@@ -396,8 +399,8 @@ table {
                  <div id="graph-bars"> </div>
               <table class=" table">
       <tbody>
-        
-       
+
+
         <tr>
           <td align="center"><h3 id="h3.-bootstrap-heading"  >Number of Records<a class="anchorjs-link" href="#h3.-bootstrap-heading"><span class="anchorjs-icon"></span></a></h3></td>
           <td class="type-info"><h3>5000</h3></td>
@@ -408,10 +411,10 @@ table {
           <td class="type-info"><h3>7.33 ms</h3></td>
             <td class="type-info"><h3>8 s</h3></td>
         </tr>
-       
-        
+
+
       </tbody>
-    </table> 
+    </table>
         </div>
 
 
