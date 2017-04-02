@@ -102,15 +102,17 @@ function addAllColumnHeadersSpecific(selector,jsonData)
      var columnSet = [];
      var headerTr$ = $('<tr/>');
  
-     for (var i = 0 ; i < 4 ; i++) {
-         var rowHash = jsonData[i];
+    // for (var i = 0 ; i < 4 ; i++) {
+         var rowHash = jsonData[0];
+     var c =1 ;
          for (var key in rowHash) {
-             if ($.inArray(key, columnSet) == -1){
+             if ($.inArray(key, columnSet) == -1 && c<4 ){
                  columnSet.push(key);
+                 c++ ;
                  headerTr$.append($('<th/>').html(key));
              }
          }
-     }
+   //  }
      $('#'+selector).append(headerTr$);
  
      return columnSet;

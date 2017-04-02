@@ -20,6 +20,7 @@ var data = JSON.parse(fs.readFileSync('file.json', 'utf8'));
 var glass = JSON.parse(fs.readFileSync('glass.json', 'utf8'));
 var acc = JSON.parse(fs.readFileSync('acc.json', 'utf8'));
 var iron = JSON.parse(fs.readFileSync('iron.json', 'utf8'));
+var glass1 = JSON.parse(fs.readFileSync('glass1.json', 'utf8'));
 
 app.use(favicon());
 app.use(logger('dev'));
@@ -53,7 +54,12 @@ app.get("/iron", function(req, res){
     res.send(JSON.stringify(iron));
 
 });
+//data specific to iron
+app.get("/glass1", function(req, res){
+  res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify(glass1));
 
+});
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
